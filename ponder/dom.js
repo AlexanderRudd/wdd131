@@ -23,3 +23,18 @@ paragraph.classList.add('background');
 const image = document.querySelector('img');
 
 image.setAttribute('src', 'images/newLogo.jpeg');
+
+let dropDown = document.getElementById('webdevlist');
+const html = document.querySelector('#HTML');
+const css = document.querySelector('#CSS');
+const js = document.querySelector('#JS');
+
+dropDown.addEventListener('change', function(){
+    html.style.color = 'purple';
+    css.style.color = 'purple';
+    js.style.color = 'purple';
+    let codeValue = dropDown.value;
+    title.textContent = codeValue;
+    document.getElementById(codeValue).style.color = 'red';
+});
+                
