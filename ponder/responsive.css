@@ -25,6 +25,13 @@ section {
 nav a {
     padding: 20px;
     color: black;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    border-top: 1px solid gray;
+}
+
+.hide {
     display: none;
 }
 nav a:hover {
@@ -41,10 +48,22 @@ nav a:hover {
     height: 4px;
     background-color: black;
     margin: 5px 0;
+    transition: .4s;
 }
 footer {
     text-align: center;
 }
+
+          
+.change .bar1 {
+  transform: translate(0, 9.5px) rotate(-45deg);
+}
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -9.5px) rotate(45deg);
+}
+          
 
 
 @media screen and (min-width: 700px) {
@@ -59,10 +78,15 @@ footer {
 
     nav a{
         display: inline;
+        border: none;
     }
 
     nav{
         text-align: center;
+    }
+
+    .hide{
+        display:block;
     }
 }
           
