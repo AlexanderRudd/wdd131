@@ -57,6 +57,16 @@ form.addEventListener("submit", function (event) {
     output.textContent = "Please choose a later date.";
     return;
 
+    if (typeValue === "student") {
+    const studentIdValue = studentNum.value.trim();
+    const isOnlyNumbers = /^\d+$/.test(studentIdValue); 
+
+    if (studentIdValue.length < 9 || !isOnlyNumbers) {
+      output.textContent = "Student ID must be at least 9 numbers and contain no letters.";
+      return;
+    }
+  }
+
   }
   
   output.innerHTML = `
