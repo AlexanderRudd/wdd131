@@ -39,6 +39,7 @@ margin-top: 50px;
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .gallery section{
@@ -52,7 +53,7 @@ margin-top: 50px;
 }
 
 .media-card{
-    flex-direction: right;
+    flex-direction: row;
 }
 
 .media-card-content p{
