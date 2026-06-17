@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Recipes Website">
+    <meta property="og:description" content="Your Description">
+    <meta property="og:url" content="Your URL">
+    <meta property="og:image" content="social-preview-image.png">
+
+    <!-- X Card -->
+    <meta name="twitter:card" content="Social Preview Image">
+    <meta name="twitter:title" content="Recipes Website">
+    <meta name="twitter:description" content="Your Description">
+    <meta name="twitter:image" content="social-preview-image.png">
+
+    <!-- One favicon (ICO works everywhere) -->
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- One Apple Touch Icon (iOS home screen) -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="recipes.css"> 
+                
+    <title>Recipes Website</title>
+</head>
+<body>
+    <main>
+        <div class="logo">
+            <img src="images/recipe-book.png" alt="recipe book">
+            <h1>Recipe Book</h1>
+        </div>
+
+
+        <div class="search">
+            <form id="searchForm">
+                <div class="field">
+                    <input id="searchFor" name="searchFor" type="text" placeholder="Find a recipe..."/>
+                </div>
+            </form>
+            <img src="images/search.svg" alt="search icon">
+        </div>
+
+        <hr>
+
+
+        <section class="media-card-container">
+            <section class="media-card">
+                <div class="media-card-image">
+                    <img src="images/apple-crisp.jpg" alt="apple crisp"> 
+                </div>
+                <div class="media-card-content">
+
+                    <h3 class="tag">dessert</h3>
+                    <h2>APPLE CRISP</h2>
+                <span
+                    class="rating"
+                    role="img"
+                    aria-label="Rating: 4 out of 5 stars"
+                    >
+                    <span aria-hidden="true" class="icon-star">⭐</span>
+                    <span aria-hidden="true" class="icon-star">⭐</span>
+                    <span aria-hidden="true" class="icon-star">⭐</span>
+                    <span aria-hidden="true" class="icon-star">⭐</span>
+                    <span aria-hidden="true" class="icon-star-empty">☆</span>
+                </span>
+
+                    <p>A paragraph with  more information about the topic mentioned in the heading.</p>
+                </div>
+            </section>
+    </main>
+  </body>
+  <footer>
+    
+    <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Recipe icons created by Freepik - Flaticon</a>                   
+                    
+    <div class="social">
+    <!-- Social media icons provided under CC from https://www.iconfinder.com/AlfredoCreates  -->
+    <a href="#"><img src="images/instagram_icon.svg" alt="instagram icon"></a>
+    <a href="#"><img src="images/youtube_icon.svg" alt="youtube icon"></a>
+    <a href="#"><img src="images/pinterest_icon.svg" alt="pinterest icon"></a>
+    </div>                  
+                
+  </footer>
+</html>
