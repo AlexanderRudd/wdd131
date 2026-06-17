@@ -33,7 +33,9 @@ hr {
 .search img {
     width: 24px; 
     height: 24px;
-    margin-right: 10px;
+    margin-right: 4px;
+    padding-left: 4px;
+    border-left: solid black 1px;
 }
 
 .social img {
