@@ -6,6 +6,7 @@
     text-align: center;
     justify-content: center;
     border-radius: 5px;
+    margin: 10px;
 }
 
 .dice_section{
@@ -15,7 +16,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    column-gap: 10px;
 }
 
 
@@ -33,4 +34,8 @@
 button{
     border: none;
     background-color: bisque;
+}
+
+.results_section{
+    text-align: center;
 }
