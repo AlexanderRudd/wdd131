@@ -400,7 +400,7 @@ class Shop {
 
     restock() {
         this.inventory = [
-            new Dice([1, 2, 3, 4, 5, 6], "Basic", 2, "white"), 
+            new Dice([1, 2, 3, 4, 5, 6], "Basic", 2, "#FFFFF0"), 
             new Dice([7, 7, 7, 7, 7, 7], "Iron", 1, "#EAEAEA"),
             new Dice([4, 4, 4, 4, 4, 4], "Gold", 1, "#FFE787"),
             new Dice([13, 13, 13, 13, 13, 13], "Cursed", 1, "#7A6174")
