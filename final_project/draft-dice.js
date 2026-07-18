@@ -1,10 +1,11 @@
 class Dice{
     result = 0
 
-    constructor(sidesList, type, price){
+    constructor(sidesList, type, price, color){
         this.sidesList = sidesList;
         this.type = type;
         this.price = price;
+        this.color = color;
     }
 
     getInfo(){
@@ -31,6 +32,10 @@ class Dice{
         return this.price;
     }
 
+    getColor(){
+        return this.color;
+    }
+
     rollSelf(){
         this.result = this.sidesList[Math.floor(Math.random() * this.sidesList.length)];
         return this.result;
@@ -42,14 +47,15 @@ class Dice{
 }
 
 class GameManager{
-    dungeon = 0;
-    floor = 0;
+    dungeon = 1;
+    floor = 1;
     roundMod = 1;
 
-    constructor(player, monster, shop) {
+    constructor(player, monster, shop, battle) {
         this.player = player;
         this.monster = monster;
         this.shop = shop;
+        this.battle = battle;
         this.dungeon = 1;
         this.floor = 1;
         this.currentScreen = 'main-menu';
@@ -70,9 +76,13 @@ class GameManager{
 
     onScreenLoad(screenId){
         if(screenId === 'battle'){
-            console.log("Prepare to fight.");
+            this.player.pullHandFromBag();
+            this.player.rollHand();
+            this.monster.setHealth((100 + (this.floor * 10)) * this.dungeon);
+            this.renderBattle(this.player.getHand());
         }
         else if(screenId === 'shop'){
+            this.shop.restock();
             this.renderShop();
         }
     }
@@ -105,11 +115,22 @@ class GameManager{
             return;
         }
 
-        playerBag.forEach((dice, index) => {
-            const diceElement = document.createElement('p');
-            diceElement.textContent = `Die ${index + 1}: ${dice.getType()} (${dice.getSides().length}-sided) - Value: ${dice.getPrice()}g`;
-            listContainer.appendChild(diceElement);
-        });
+    playerBag.forEach((dice, index) => {
+        const diceRow = document.createElement('div');
+        diceRow.className = 'bag-dice-item';
+
+        const textElement = document.createElement('span');
+        textElement.textContent = `Die ${index + 1}: ${dice.getType()} (${dice.getSides().length}-sided) - Value: ${dice.getPrice()}g`;
+
+        const colorSwatch = document.createElement('div');
+        colorSwatch.className = 'dice-color-swatch';
+        colorSwatch.style.backgroundColor = dice.getColor(); 
+
+        diceRow.appendChild(textElement);
+        diceRow.appendChild(colorSwatch);
+
+        listContainer.appendChild(diceRow);
+    });
     }
 
     goUpFloor() {
@@ -141,6 +162,7 @@ class GameManager{
             <h1>Merchant</h1>
             <h3 id="shop-gold-display">Your Gold: ${this.player.getGold()}</h3>
             <p id="shop-message"></p>
+            <div class="shop-dice"></div>
             <button class="dice-bag-button">Open Dice Bag</button>
             <button class="main-menu-button">Back</button>
         `; 
@@ -152,6 +174,8 @@ class GameManager{
 
         if (currentStock.length === 0) {
             shopScreen.innerHTML += `<p>The merchant is sold out!</p>`;
+            shopScreen.querySelector(".dice-bag-button").addEventListener("click", () => this.toggleDiceBag(true));
+            shopScreen.querySelector(".main-menu-button").addEventListener("click", () => this.changeScreen("main-menu"));
             return;
         }
 
@@ -161,7 +185,8 @@ class GameManager{
             
             newDice.innerHTML = `
                 <h3>${dice.getType()} Die</h3>
-                <p>Sides: ${dice.getSides().length}</p>
+                <p>Sides:</p>
+                <p>${dice.getSides()}</p>
                 <p>Cost: ${dice.getPrice()} Gold</p>
             `;
             
@@ -178,10 +203,69 @@ class GameManager{
                     document.getElementById('shop-message').style.color = "red";
                 }
             });
-
+            
             newDice.appendChild(buyBtn);
-            shopScreen.appendChild(newDice);
+
+            const shopDiceSection = document.querySelector(".shop-dice");
+            shopDiceSection.appendChild(newDice);
         });
+    }
+
+    renderBattle(diceHand) {
+        const battleScreen = document.querySelector('#screen-battle');
+        battleScreen.innerHTML = `
+        <h1>Dungeon: ${this.dungeon}, Floor: ${this.floor}</h1>
+        <h2>Monster: ${this.monster.getName()}, ${this.monster.getHealth()}</h2>
+        <h2>Player Health: ${this.player.getHealth()}</h2>
+        <div id="dice-hand-section">
+        </div>
+        <div id="score-section">
+        </div>
+        <button id="reroll-button">Reroll</button>
+        <button id="attack-button">Attack</button>
+        <button class="dice-bag-button">Open Dice Bag</button>
+        <button class="main-menu-button">Back</button>`
+
+        battleScreen.querySelector(".dice-bag-button").addEventListener("click", () => this.toggleDiceBag(true));
+        battleScreen.querySelector(".main-menu-button").addEventListener("click", () => this.changeScreen("main-menu"));
+        battleScreen.querySelector("#attack-button").addEventListener("click", () => this.renderDamage());
+        battleScreen.querySelector('#reroll-button').addEventListener("click", () => this.rerollHand());
+
+        const diceSection = battleScreen.querySelector("#dice-hand-section");
+        const scoreSection = document.querySelector("#score-section");
+
+        diceHand.forEach(dice => {
+
+            const newDice = document.createElement('div');
+            newDice.classList.add('battle-dice');
+            newDice.style.backgroundColor = dice.getColor();
+            newDice.innerHTML = `
+            <h3>${dice.getResult()}</h3>
+            <p>${dice.getType()}</p>`;
+
+            diceSection.appendChild(newDice);
+        })
+
+        scoreSection.innerHTML = `Score: ${this.player.getScore()}`;
+    }
+
+    renderDamage(){
+        this.battle.attackPhase();
+
+        if(this.monster.getHealth() <= 0){
+            this.player.changeGold(3);
+            this.changeScreen("main-menu");
+            this.goUpFloor();
+        }else{
+            this.player.pullHandFromBag();
+            this.player.rollHand();
+            this.renderBattle(this.player.getHand());
+        }
+    }
+
+    rerollHand(){
+        this.player.rollHand();
+        this.renderBattle(this.player.getHand());
     }
 
 }
@@ -253,6 +337,14 @@ class Player{
         return resultsList;
     }
 
+    getScore(){
+        let score = 0;
+        this.diceHand.forEach(dice => {
+            score += dice.getResult();
+        })
+        return score;
+    }
+
     getRoll(){
         const resultsList = [];
         this.diceHand.forEach(dice => {
@@ -283,6 +375,10 @@ class Monster{
         return this.health;
     }
 
+    setHealth(amount){
+        this.health = amount;
+    }
+
     takeDamage(amount){
         this.health -= amount;
     }
@@ -304,8 +400,10 @@ class Shop {
 
     restock() {
         this.inventory = [
-            new Dice([1, 2, 3, 4, 5, 6], "Basic", 2), 
-            new Dice([1, 1, 1, 6, 6, 6], "Risky", 5)
+            new Dice([1, 2, 3, 4, 5, 6], "Basic", 2, "white"), 
+            new Dice([7, 7, 7, 7, 7, 7], "Iron", 1, "#EAEAEA"),
+            new Dice([4, 4, 4, 4, 4, 4], "Gold", 1, "#FFE787"),
+            new Dice([13, 13, 13, 13, 13, 13], "Cursed", 1, "#7A6174")
         ];
     }
 
@@ -331,19 +429,33 @@ class Shop {
     }
 }
 
+class Battle {
+    constructor(monster, player){
+        this.monster = monster;
+        this.player = player;
+    }
+
+    attackPhase(){
+        const playerDamage = this.player.getScore();
+
+        if(playerDamage >= this.monster.getHealth()){
+            this.monster.takeDamage(playerDamage);
+        }else{
+            this.monster.takeDamage(playerDamage);
+            this.player.takeDamage(this.monster.dealDamage());
+        }
+    }
+}
+
 function attachButtonListeners(gM){
-    document.querySelector("#battle-button").addEventListener("click", () => gM.changeScreen("battle"))
-    document.querySelector("#shop-button").addEventListener("click", () => gM.changeScreen("shop"))
+    document.querySelector("#battle-button").addEventListener("click", () => gM.changeScreen("battle"));
+    document.querySelector("#shop-button").addEventListener("click", () => gM.changeScreen("shop"));
 
     const openBagButtons = document.querySelectorAll(".dice-bag-button");
     const mainMenuButtons = document.querySelectorAll(".main-menu-button");
-    
+
     openBagButtons.forEach(button => {
         button.addEventListener("click", () => gM.toggleDiceBag(true));
-    });
-
-    mainMenuButtons.forEach(button => {
-        button.addEventListener("click", () => gM.changeScreen("main-menu"));
     });
 
     document.querySelector(".close-button").addEventListener("click", () => gM.toggleDiceBag(false));
@@ -361,7 +473,8 @@ function init(){
     const player = new Player();
     const monster = new Monster(100, 10);
     const shop = new Shop();
-    const gM = new GameManager(player, monster, shop);
+    const battle = new Battle(monster, player);
+    const gM = new GameManager(player, monster, shop, battle);
     attachButtonListeners(gM);
 
     console.log(gM.getDungeon());
