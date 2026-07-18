@@ -46,6 +46,18 @@ class Dice{
     }
 }
 
+const diceIndex = [
+    new Dice([1, 2, 3, 4, 5, 6], "Basic", 1, "#FFFFF0"),
+    new Dice([10, 10, 10, 10, 10, 10], "Iron", 2, "#EAEAEA"),
+    new Dice([4, 4, 5, 5, 6, 6], "Gold", 1, "#FFE787"),
+    new Dice([7, 7, 7, 7, 7, 7], "Cursed", 2, "#7A6174"),
+    new Dice([20, 20, 20, 20, 20, 20], "Mythical", 4, "#D36135"),
+    new Dice([9, 9, 9, 9, 9, 9], "Lucky", 2, "#BAD29F"),
+    new Dice([1, 1, 1, 1, 1, 1], "Broken", 2, "#E0E0E2"),
+    new Dice([5, 10, 15, 20, 25, 30], "Mercury", 4, "#AFBED1"),
+    new Dice([100, 100, 100, 100, 100, 100], "Legendary", 6, "#F7B32B")
+]
+
 class GameManager{
     dungeon = 1;
     floor = 1;
@@ -405,12 +417,11 @@ class Shop {
     }
 
     restock() {
-        this.inventory = [
-            new Dice([1, 2, 3, 4, 5, 6], "Basic", 2, "#FFFFF0"), 
-            new Dice([7, 7, 7, 7, 7, 7], "Iron", 1, "#EAEAEA"),
-            new Dice([4, 4, 4, 4, 4, 4], "Gold", 1, "#FFE787"),
-            new Dice([13, 13, 13, 13, 13, 13], "Cursed", 1, "#7A6174")
-        ];
+        this.inventory = [];
+        this.inventory.push(diceIndex[Math.floor(Math.random() * diceIndex.length)]);
+        this.inventory.push(diceIndex[Math.floor(Math.random() * diceIndex.length)]);
+        this.inventory.push(diceIndex[Math.floor(Math.random() * diceIndex.length)]);
+        this.inventory.push(diceIndex[Math.floor(Math.random() * diceIndex.length)]);
     }
 
     getInventory() {
@@ -466,6 +477,8 @@ function attachButtonListeners(gM){
 
     document.querySelector(".close-button").addEventListener("click", () => gM.toggleDiceBag(false));
 }
+
+
 
 
 
