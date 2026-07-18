@@ -78,7 +78,9 @@ class GameManager{
         if(screenId === 'battle'){
             this.player.pullHandFromBag();
             this.player.rollHand();
-            this.monster.setHealth((100 + (this.floor * 10)) * this.dungeon);
+            this.monster = new Monster((100 + (this.floor * 10)) * this.dungeon, 10 + this.floor);
+            this.battle.monster = this.monster;
+            this.player.setHealth(100);
             this.renderBattle(this.player.getHand());
         }
         else if(screenId === 'shop'){
@@ -282,6 +284,10 @@ class Player{
 
     getHealth(){
         return this.health;
+    }
+
+    setHealth(amount){
+        this.health = amount;
     }
 
     takeDamage(amount){
