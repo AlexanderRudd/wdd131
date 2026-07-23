@@ -1,0 +1,74 @@
+{
+    "health": 90,
+    "gold": 5,
+    "dicePool": [
+        {
+            "sides": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "type": "Basic",
+            "price": 2
+        },
+        {
+            "sides": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "type": "Basic",
+            "price": 2
+        },
+        {
+            "sides": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "type": "Basic",
+            "price": 2
+        },
+        {
+            "sides": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "type": "Basic",
+            "price": 2
+        },
+        {
+            "sides": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "type": "Basic",
+            "price": 2
+        }
+    ],
+    "shadowPool": [],
+    "hellfire": 0,
+    "relicPool": [
+        "Small Bag"
+    ],
+    "dungeon": 1,
+    "floor": 2,
+    "round_mod": 1.25
+}

@@ -1,0 +1,61 @@
+[
+    {"name": "Sharp Fangs", "weight": 5, "desc": "Vampiric Dice give x4, but deal double the damage.", "price": 4},
+    {"name": "Batleather Cloak", "weight": 3, "desc": "Vampiric Dice deal -2 less damage.", "price": 6},
+    {"name": "Dracula's Eye", "weight": 1, "desc": "At the end of each combat, you gain +2 health for each Vampiric Dice in your Hand.", "price": 7},
+
+    {"name": "Golden Glove", "weight": 5, "desc": "Gold Dice give an extra +2 gold.", "price": 4},
+    {"name": "Gilded Dagger", "weight": 3, "desc": "Gold Dice can't be rerolled, but give double the gold.", "price": 6},
+    {"name": "Topaz Mask", "weight": 1, "desc": "At the end of each combat, gain +1 gold for each Dice in your Bag.", "price": 7},
+
+    {"name": "Steel Helm", "weight": 5, "desc": "Iron Dice are worth an extra +100 base.", "price": 4},
+    {"name": "Heavy Blade", "weight": 3, "desc": "Iron Dice increase each side by +5 at the start of each combat.", "price": 6},
+    {"name": "Suffocating Mask", "weight": 1, "desc": "For each Iron Dice in your Dice Bag, +25 base score.", "price": 7},
+
+    {"name": "Haunted Robes", "weight": 5, "desc": "Ethereal Dice create an additional Reflection.", "price": 4},
+    {"name": "Voodoo Doll", "weight": 3, "desc": "Reflection Dice are worth an additional +3 multiplier.", "price": 6},
+    {"name": "Mistform Bag", "weight": 1, "desc": "For every 2 Ethereal Dice in your Dice Bag, +1 Dice Hand Size.", "price": 7},
+
+    {"name": "Alabaster Mask", "weight": 5, "desc": "Ivory Dice give an additional +2 multiplier.", "price": 4},
+    {"name": "Cackling Skull", "weight": 3, "desc": "Ivory Dice create one Splinter Dice (gives +2 multiplier) when rolled.", "price": 6},
+    {"name": "Withered Bone", "weight": 1, "desc": "For each Ivory Dice in your Dice Bag, +1 multiplier.", "price": 7},
+
+    {"name": "Bleeding Eye", "weight": 5, "desc": "Ruby Dice give an extra +5 health.", "price": 4},
+    {"name": "Scarlet Blade", "weight": 3, "desc": "Ruby Dice can heal you past 100 health.", "price": 6},
+    {"name": "Crimson Robes", "weight": 1, "desc": "At the end of each combat, you heal +2 health for each Ruby Dice in your Dice Bag", "price": 7},
+
+    {"name": "Viper's Fang", "weight": 5, "desc": "Poisonous Dice give an additional Poison stack.", "price": 4},
+    {"name": "Sulphuric Eye", "weight": 3, "desc": "Poison does +5% more damage.", "price": 6},
+    {"name": "Emerald Mask", "weight": 1, "desc": "For each Poisonous Dice in your Dice Bag, Poison does an additional +1% damage.", "price": 7},
+
+    {"name": "Brimstone Crown", "weight": 5, "desc": "Hellfire does 25% less damage to yourself.", "price": 6},
+    {"name": "Magmatic Greatsword", "weight": 3, "desc": "+1 mult for every 10 Hellfire.", "price": 6},
+    {"name": "Smoldering Robes", "weight": 1, "desc": "At the end of each combat, Infernal Dice get +5 to each side.", "price": 7},
+
+    {"name": "Glowing Halo", "weight": 5, "desc": "Radiant Dice heal you for each Dice in your Dice Bag.", "price": 6},
+    {"name": "Holy Blade", "weight": 3, "desc": "Radiant Dice give an additional +1 mult for each Dice in your Dice Bag.", "price": 6},
+
+    {"name": "Smoke Veil", "weight": 3, "desc": "At the start of each combat, Shadow Dice copy the sides of another Dice in your Dice Bag.", "price": 4},
+    {"name": "Black Dagger", "weight": 3, "desc": "Shadow Dice give +2 multiplier.", "price": 4},
+
+    {"name": "Small Bag", "weight": 10, "desc": "+1 Dice Hand Size.", "price": 4},
+    {"name": "Bottomless Bag", "weight": 2, "desc": "+3 Dice Hand Size.", "price": 7},
+    {"name": "Bloody Blindfold", "weight": 1, "desc": "-1 Dice Hand Size, x2 multiplier.", "price": 6},
+    {"name": "Braggart's Bag", "weight": 1, "desc": "-1 Reroll, +1 Dice Hand Size.", "price": 5},
+    {"name": "Merchant's Bag", "weight": 2, "desc": "+1 Dice Hand Size for every 10 gold you have.", "price": 7},
+    {"name": "Gluttonous Bag", "weight": 1, "desc": "At the end of each combat, destroy a random die and gain +1 Dice Hand Size.", "price": 6},
+
+    {"name": "Tuning Fork", "weight": 7, "desc": "Pair's give an extra +100 base.", "price": 5},
+    {"name": "Jagged Trident", "weight": 7, "desc": "Three of A Kind's give an extra +100 base.", "price": 5},
+    {"name": "Furious Greataxe", "weight": 7, "desc": "Four of A Kind's give an extra +100 base.", "price": 5},
+    {"name": "Crown of Shadows", "weight": 7, "desc": "Five of A Kind's give an extra +100 base.", "price": 6},
+
+    {"name": "Broken Buckler", "weight": 5, "desc": "Reduces damage taken by -5.", "price": 4},
+    {"name": "Mothbitten Cape", "weight": 10, "desc": "Each time you take damage, +2 gold.", "price": 5},
+
+    {"name": "Glimmering Mirror", "weight": 2, "desc": "At the end of each combat, duplicates a random die.", "price": 6},
+    {"name": "Echo Tome", "weight": 3, "desc": "Adds 2 temporary copies of dice to your hand each combat.", "price": 7},
+    {"name": "Bonemarrow Flask", "weight": 1, "desc": "Create 2 Splinter Dice at the start of each combat.", "price": 5},
+
+    {"name": "Gambler's Glove", "weight": 3, "desc": "+1 Reroll for every 10 gold you have.", "price": 5},
+    {"name": "Barbed Gauntlet", "weight": 3, "desc": "+2 Rerolls but every time you reroll you lose 3 health.", "price": 5}
+]
